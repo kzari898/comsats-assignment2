@@ -1,0 +1,30 @@
+services:
+  web2:
+    image: node:20-alpine
+    container_name: literati_web_part2
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - node_modules_part2:/app/node_modules
+      - next_part2:/app/.next
+    ports:
+      - "8081:3000"
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo2:27017/literati
+    depends_on:
+      - mongo2
+    command: sh -lc "npm install && npm run build && npm start"
+
+  mongo2:
+    image: mongo:7
+    container_name: literati_mongo_part2
+    restart: unless-stopped
+    volumes:
+      - mongo_data_part2:/data/db
+
+volumes:
+  mongo_data_part2:
+  node_modules_part2:
+  next_part2:
