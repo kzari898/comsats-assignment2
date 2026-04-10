@@ -11,11 +11,12 @@ services:
     ports:
       - "8081:3000"
     environment:
-      - PORT=3000
-      - MONGODB_URI=mongodb://mongo2:27017/literati
+      PORT: "3000"
+      MONGODB_URI: "mongodb://mongo2:27017/literati"
     depends_on:
       - mongo2
-command: sh -lc "npm install && npm run build && npx next start -H 0.0.0.0 -p 3000"
+    command: sh -lc "npm install --no-audit --no-fund && npm run build && npx next start -H 0.0.0.0 -p 3000"
+
   mongo2:
     image: mongo:7
     container_name: literati_mongo_part2
