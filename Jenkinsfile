@@ -35,12 +35,8 @@ pipeline {
     }
 
     post {
-        // Automatically runs after the build finishes, regardless of success or failure
         always {
-            echo "Deployment pipeline finished."
-        }
-        failure {
-            echo "Deployment failed! Check the logs above for specific errors."
+            // This replaces the invalid publishTestResults command
+            junit 'target/surefire-reports/*.xml'
         }
     }
-}
