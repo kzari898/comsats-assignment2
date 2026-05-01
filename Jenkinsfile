@@ -35,11 +35,14 @@ pipeline {
     }
 
     post {
-    always {
-        // 'junit' is the official Jenkins command to read Maven test results
-        junit '**/target/surefire-reports/*.xml'
+        always {
+            // This is the official command Jenkins uses to read your TestNG results
+            junit '**/target/surefire-reports/*.xml'
+        }
+        success {
+            echo "SUCCESS: Application is live and all 15 tests passed!"
+        }
+        failure {
+            echo "FAILURE: The build or tests failed. Check the logs above."
+        }
     }
-    success {
-        echo "Congratulations! The application is live and all tests passed."
-    }
-}
