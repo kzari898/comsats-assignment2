@@ -1,6 +1,7 @@
 services:
   web2:
     image: node:20-alpine
+    user: "node"
     container_name: literati_web_part2
     restart: unless-stopped
     working_dir: /app
