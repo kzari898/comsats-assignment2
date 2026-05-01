@@ -36,10 +36,10 @@ pipeline {
 
     post {
         always {
-            // 'junit' is the correct command, 'publishTestResults' is wrong.
+            // 'junit' is the correct command, 'publishTestResults' is the one causing the crash
             junit '**/target/surefire-reports/*.xml'
         }
         failure {
-            echo "The build failed. Please check the spelling of testng.xml"
+            echo "Deployment or Tests failed. Check the file locations!"
         }
     }
