@@ -35,11 +35,11 @@ pipeline {
     }
 
     post {
-        always {
-            // 'junit' is the correct command, 'publishTestResults' is the one causing the crash
-            junit '**/target/surefire-reports/*.xml'
-        }
-        failure {
-            echo "Deployment or Tests failed. Check the file locations!"
-        }
+    always {
+        // 'junit' is the official Jenkins command to read Maven test results
+        junit '**/target/surefire-reports/*.xml'
     }
+    success {
+        echo "Congratulations! The application is live and all tests passed."
+    }
+}
