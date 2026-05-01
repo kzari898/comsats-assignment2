@@ -36,7 +36,10 @@ pipeline {
 
     post {
         always {
-            // This replaces the invalid publishTestResults command
-            junit 'target/surefire-reports/*.xml'
+            // Use the correct command 'junit' instead of 'publishTestResults'
+            junit '**/target/surefire-reports/*.xml'
+        }
+        failure {
+            echo "Pipeline failed. Check the testng.xml path and naming."
         }
     }
