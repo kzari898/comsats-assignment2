@@ -45,7 +45,7 @@ pipeline {
         always {
             dir('tests') {
                 // This is the standard command that Jenkins understands
-                junit '**/target/surefire-reports/*.xml'
+                junit '**/surefire-reports/*.xml'
             }
         }
         success {
