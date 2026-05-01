@@ -43,6 +43,6 @@ pipeline {
             echo "SUCCESS: Application is live and all 15 tests passed!"
         }
         failure {
-            echo "FAILURE: The build or tests failed. Check the logs above."
+            echo "BUILD FAILED: Check logs for errors."
         }
     }
